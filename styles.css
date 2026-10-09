@@ -1,0 +1,695 @@
+/* ========================================
+   CSS Reset & Root Variables
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Warm, Food-Friendly Palette */
+    --color-primary: #d4663f;        /* Warm terracotta/pizza red */
+    --color-primary-light: #e8b5a0;  /* Soft peachy tone */
+    --color-primary-dark: #a84c2a;   /* Darker terra cotta */
+    --color-accent: #f4a261;         /* Warm golden accent */
+    --color-accent-dark: #d48f4a;    /* Darker golden */
+    --color-bg: #faf8f6;             /* Warm off-white */
+    --color-surface: #ffffff;        /* Pure white for cards */
+    --color-border: #e8ddd8;         /* Warm neutral border */
+    --color-text: #2c2420;           /* Dark warm text */
+    --color-text-secondary: #6b5f58; /* Muted text */
+    --color-success: #8fb77f;        /* Warm green */
+    --color-error: #d9534f;          /* Muted red */
+
+    /* Typography */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-size-base: 16px;
+    --font-size-sm: 14px;
+    --font-size-lg: 18px;
+    --font-size-xl: 24px;
+    --font-size-2xl: 32px;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+
+    /* Border Radius */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Shadows */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.12);
+
+    /* Transitions */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 300ms ease-in-out;
+}
+
+/* ========================================
+   Body & Layout
+   ======================================== */
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: var(--spacing-xl);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--spacing-xl);
+    min-height: 100vh;
+}
+
+header {
+    grid-column: 1 / -1;
+    padding: var(--spacing-lg) 0;
+    border-bottom: 2px solid var(--color-primary);
+    margin-bottom: var(--spacing-lg);
+}
+
+header h1 {
+    font-size: var(--font-size-2xl);
+    color: var(--color-primary-dark);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+aside {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+/* ========================================
+   Inputs Section
+   ======================================== */
+
+.inputs-section {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.section-header {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.section-header h2 {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+.input-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.input-group:last-child {
+    margin-bottom: 0;
+}
+
+.input-group label {
+    display: block;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   Slider & Number Input Sync
+   ======================================== */
+
+.slider-input-pair {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.slider {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--color-border);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.slider:hover {
+    background-color: var(--color-primary-light);
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+}
+
+.slider::-webkit-slider-thumb:hover {
+    background-color: var(--color-primary-dark);
+    transform: scale(1.15);
+    box-shadow: var(--shadow-md);
+}
+
+.slider::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    border: none;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-fast);
+}
+
+.slider::-moz-range-thumb:hover {
+    background-color: var(--color-primary-dark);
+    transform: scale(1.15);
+    box-shadow: var(--shadow-md);
+}
+
+.slider::-moz-range-track {
+    background: transparent;
+    border: none;
+}
+
+.slider::-moz-range-progress {
+    background-color: var(--color-primary);
+    border-radius: 3px;
+}
+
+.number-input {
+    width: 80px;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    text-align: center;
+    transition: border-color var(--transition-fast);
+}
+
+.number-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(212, 102, 63, 0.1);
+}
+
+/* ========================================
+   Select Dropdowns
+   ======================================== */
+
+select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-base);
+    color: var(--color-text);
+    background-color: var(--color-surface);
+    cursor: pointer;
+    transition: border-color var(--transition-fast);
+}
+
+select:hover {
+    border-color: var(--color-primary);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(212, 102, 63, 0.1);
+}
+
+/* ========================================
+   Temperature Toggle Styling
+   ======================================== */
+
+.temp-toggle {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.temp-unit-btn {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.temp-unit-btn:hover {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+}
+
+.temp-unit-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+/* ========================================
+   Toggle Switch
+   ======================================== */
+
+.toggle-group {
+    display: flex;
+    align-items: center;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: var(--spacing-md);
+    flex: 1;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+    background-color: var(--color-border);
+    border-radius: 14px;
+    transition: background-color var(--transition-normal);
+}
+
+.toggle-slider::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 2px;
+    top: 2px;
+    background-color: var(--color-surface);
+    border-radius: 50%;
+    transition: transform var(--transition-normal);
+    box-shadow: var(--shadow-sm);
+}
+
+.toggle-input:checked + .toggle-slider {
+    background-color: var(--color-success);
+}
+
+.toggle-input:checked + .toggle-slider::after {
+    transform: translateX(20px);
+}
+
+.toggle-text {
+    font-weight: 600;
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+}
+
+/* ========================================
+   Pizza Style Selector
+   ======================================== */
+
+.style-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.style-btn {
+    padding: var(--spacing-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.style-btn:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-light);
+}
+
+.style-btn.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary-dark);
+    box-shadow: var(--shadow-md);
+}
+
+.style-description {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    font-style: italic;
+    margin: var(--spacing-md) 0 0 0;
+    min-height: 24px;
+}
+
+/* ========================================
+   Helper Text
+   ======================================== */
+
+.helper-text {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    margin-top: var(--spacing-sm);
+}
+
+/* ========================================
+   Results Panel (Sticky Sidebar)
+   ======================================== */
+
+.results-panel {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: var(--spacing-xl);
+    max-height: calc(100vh - var(--spacing-xl) * 2);
+    overflow-y: auto;
+}
+
+.results-panel h2 {
+    font-size: var(--font-size-xl);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-lg);
+    font-weight: 700;
+}
+
+.results-panel h3 {
+    font-size: var(--font-size-lg);
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+/* ========================================
+   Summary Card
+   ======================================== */
+
+.summary-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, rgba(212, 102, 63, 0.05) 100%);
+    border: 1px solid var(--color-primary-light);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.summary-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.summary-value {
+    font-size: var(--font-size-lg);
+    font-weight: 700;
+    color: var(--color-primary-dark);
+}
+
+/* ========================================
+   Recipe Sections
+   ======================================== */
+
+.recipe-section {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.recipe-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ========================================
+   Ingredients Table
+   ======================================== */
+
+.ingredients-table {
+    width: 100%;
+    font-size: var(--font-size-sm);
+    border-collapse: collapse;
+}
+
+.ingredients-table thead {
+    background-color: var(--color-primary-light);
+    color: var(--color-text);
+}
+
+.ingredients-table th {
+    padding: var(--spacing-sm);
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.ingredients-table td {
+    padding: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.ingredients-table tbody tr:hover {
+    background-color: var(--color-bg);
+}
+
+.ingredients-table .ingredient-weight {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.ingredients-table .ingredient-percent {
+    color: var(--color-text-secondary);
+}
+
+/* ========================================
+   Yeast Reference
+   ======================================== */
+
+.yeast-reference {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+}
+
+/* ========================================
+   Instructions List
+   ======================================== */
+
+.instructions-list {
+    list-style: none;
+    font-size: var(--font-size-sm);
+}
+
+.instructions-list li {
+    margin-bottom: var(--spacing-lg);
+    padding-left: 48px;
+    position: relative;
+    line-height: 1.7;
+    color: var(--color-text);
+}
+
+.instructions-list li:before {
+    content: attr(data-step);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    background-color: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* ========================================
+   Fermentation Schedule
+   ======================================== */
+
+.fermentation-schedule {
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    line-height: 1.8;
+}
+
+.fermentation-step {
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--color-bg);
+    border-left: 4px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+}
+
+.fermentation-step-time {
+    font-weight: 600;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+
+    aside {
+        grid-column: 1;
+        grid-row: auto;
+        position: static;
+        max-height: none;
+    }
+
+    .results-panel {
+        position: static;
+        max-height: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    header h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    .style-selector {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    }
+
+    .summary-card {
+        grid-template-columns: 1fr;
+    }
+
+    .slider-input-pair {
+        flex-wrap: wrap;
+    }
+
+    .number-input {
+        width: 100%;
+        flex: 1;
+        min-width: 60px;
+    }
+
+    .temp-toggle {
+        flex-wrap: wrap;
+    }
+
+    .temp-unit-btn {
+        flex: 1;
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    header h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    .inputs-section {
+        padding: var(--spacing-md);
+    }
+
+    .style-selector {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .style-btn {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-sm);
+    }
+
+    .section-header h2 {
+        font-size: var(--font-size-base);
+    }
+
+    .results-panel {
+        padding: var(--spacing-md);
+    }
+
+    .ingredients-table th,
+    .ingredients-table td {
+        padding: var(--spacing-xs);
+        font-size: 13px;
+    }
+}
